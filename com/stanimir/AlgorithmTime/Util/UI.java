@@ -61,8 +61,20 @@ public class UI {
         return makeChoice(100_000);
     }
 
-    public void createCustomArray() {
-        System.out.printf("%nEnter values, separated with commas%n");
+    public void enterValuesPrompt() {
+        System.out.printf("Enter comma separated values:%n");
         System.out.print("-> ");
+    }
+
+    public int printArraysPrompt() {
+        System.out.print("""
+                1. Print original array.
+                2. Print sorted array.
+                3. Print both.
+                4. Exit.
+                """);
+        System.out.print("-> ");
+
+        return makeChoice(4);
     }
 }

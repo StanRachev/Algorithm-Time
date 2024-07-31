@@ -1,25 +1,27 @@
 package stanimir.AlgorithmTime.Util;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Random;
-import java.util.Scanner;
 
 public class ArrayCreator {
 
-    public static int[] createCustomArray(int size) {
-        Scanner scan = new Scanner(System.in);
+    private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
-        String userInput = scan.nextLine();
+    public static int[] createCustomArray() {
+        try {
+            String[] userInput = reader.readLine().split("[^0-9]+");
+            int[] userArrayInt = new int[userInput.length];
 
-        Scanner scanner = new Scanner(userInput);
-        String[] userInputParameters = new String[size];
-        int[] userInputParametersInt = new int[size];
-
-        for (int i = 0; i < size; i++) {
-            userInputParameters[i] = scanner.useDelimiter(",").next().replaceAll("\\s", "");
-            userInputParametersInt[i] = Integer.parseInt(userInputParameters[i]);
+            for (int i = 0; i < userInput.length; i++) {
+                userArrayInt[i] = Integer.parseInt(userInput[i]);
+            }
+            return userArrayInt;
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        return userInputParametersInt;
+        return null;
     }
 
     public static int[] createRandomArray(int size) {

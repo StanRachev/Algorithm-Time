@@ -6,23 +6,29 @@ import stanimir.AlgorithmTime.SortingAlgorithms.*;
 
 public class SortManager {
 
+    int[] sortedArray;
+
     public void launch() {
         UI ui = new UI();
 
         int sortChoice = ui.typeOfSort();
-        int sizeOfArray = ui.enterSizeOfArray();
         int arrayGeneration = ui.enterOrGenerateArray();
 
         int[] array;
         if (arrayGeneration == 1) {
-            ui.createCustomArray();
-            array = ArrayCreator.createCustomArray(sizeOfArray);
+            ui.enterValuesPrompt();
+            array = ArrayCreator.createCustomArray();
         } else {
-            array = ArrayCreator.createRandomArray(sizeOfArray);
+            array = ArrayCreator.createRandomArray(ui.enterSizeOfArray());
         }
         double[] sortTime = returnSortTime(sortChoice, array);
-
         Print.printTimes(sortChoice, sortTime);
+        System.out.println();
+
+        int choice = 0;
+        while ((choice = ui.printArraysPrompt()) != 4) {
+            Print.printOptions(choice, array, sortedArray);
+        }
     }
 
     public double[] returnSortTime(int userChoiceSort, int[] array) {
@@ -57,6 +63,10 @@ public class SortManager {
         algorithm.sort(arrToSort);
         long endTime = System.nanoTime();
 
+        if (sortedArray == null) {
+            sortedArray = arrToSort;
+        }
+
         // Convert nanoseconds to seconds
         return ((endTime - startTime) / 1e6) / 1000;
     }
@@ -67,6 +77,10 @@ public class SortManager {
         long startTime = System.nanoTime();
         algorithm.sort(arrToSort, start, array.length);
         long endTime = System.nanoTime();
+
+        if (sortedArray == null) {
+            sortedArray = arrToSort;
+        }
 
         // Convert nanoseconds to seconds
         return ((endTime - startTime) / 1e6) / 1000;

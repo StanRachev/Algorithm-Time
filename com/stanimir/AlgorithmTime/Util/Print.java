@@ -1,5 +1,7 @@
 package stanimir.AlgorithmTime.Util;
 
+import java.util.Arrays;
+
 public class Print {
 
     public static void printTimes(int userChoiceSort, double... sort) {
@@ -17,6 +19,32 @@ public class Print {
             System.out.printf("%n%-20s%-10f%s%n", "Counting sort:", sorts[0], "seconds.");
         } else {
             System.out.printf("%n%-20s%-10f%s%n", "Radix sort:", sorts[0], "seconds.");
+        }
+    }
+
+    public static void printOriginalArray(int[] array) {
+        System.out.println("Original array: " + Arrays.toString(array));
+    }
+
+    public static void printSortedArray(int[] array) {
+        System.out.println("Sorted array: " + Arrays.toString(array));
+    }
+
+    public static void printOptions(int choice, int[] arrOrig, int[] arrSorted) {
+        switch (choice) {
+            case 1:
+                Print.printOriginalArray(arrOrig);
+                System.out.println();
+                break;
+            case 2:
+                Print.printSortedArray(arrSorted);
+                System.out.println();
+                break;
+            case 3:
+                Print.printOriginalArray(arrOrig);
+                Print.printSortedArray(arrSorted);
+                System.out.println();
+                break;
         }
     }
 }
