@@ -31,7 +31,7 @@
   - **SortManager**: Manages sorting operations and measures execution time.
   - **UI**: User input and interaction.
   - **Print**: Prints original and sorted array.
-  - **ArrayCreator**: Creates custom, random arrays and copying functionality.
+  - **ArrayCreator**: Creates custom, random arrays and provides copying functionality.
 - **`SortingAlgorithms`**: Contains the sorting algorithms.
 
 ## Usage
